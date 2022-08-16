@@ -1,4 +1,6 @@
-# map-game
+# The Map Game
+
+![](https://github.com/cajias/ts-node-starter/actions/workflows/ci.yaml/badge.svg?event=push) ![Coverage](./coverage/badges.svg)
 
 ## Requirements
 
