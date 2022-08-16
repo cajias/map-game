@@ -9,9 +9,12 @@
   "private": true,
   "packageManager": "yarn@3.2.2",
   "scripts": {
-    "test": "jest",
+    "test:pre": "rm -rf dist && yarn lint && tsc",
+    "test": "yarn test:pre && yarn jest",
+    "test:ci": "jest --coverage && yarn test:bump && yarn test:ci-badges",
+    "test:bump": "jest-coverage-thresholds-bumper --silent --margin 1",
+    "test:ci-badges": "coverage-badges",
     "lint": "eslint",
-    "ci": "jest --coverage",
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "postinstall": "husky install"
@@ -21,6 +24,7 @@
     "@types/node": "^18.7.5",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
+    "coverage-badges-cli": "^1.0.10",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -47,10 +51,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 0,
-        "functions": 0,
-        "lines": 0,
-        "statements": 0
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
       }
     }
   },
@@ -65,8 +69,7 @@
       "plugin:@typescript-eslint/recommended",
       "plugin:prettier/recommended"
     ],
-    "overrides": [
-    ],
+    "overrides": [],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaVersion": "latest"
@@ -80,7 +83,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,css,md}": "prettier --write",
-    "*.{ts}": "eslint --fix"
+    "*.{js,ts,css,md,json}": "prettier --write",
+    "*.{ts}": "eslint --cache --fix"
   }
 }
