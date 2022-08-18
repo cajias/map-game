@@ -24,12 +24,13 @@ $ yarn build
 - Run the application with the following command:
 
 ```bash
-$ yarn start
+$ yarn help # Display the available commands
+$ yarn start # Start the application with default configuration
 ```
 
 - Run tests with the following command:
 
 ```bash
 $ yarn test # or
-$ yarn ci # for continuous integration
+$ yarn test:ci # for continuous integration
 ```

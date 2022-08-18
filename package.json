@@ -9,29 +9,26 @@
   "private": true,
   "packageManager": "yarn@3.2.2",
   "scripts": {
-    "test:pre": "rm -rf dist && yarn lint && tsc",
+    "clean": "git clean -fdx",
+    "test:pre": "rm -rf dist && rm -rf coverage && yarn lint && tsc",
     "test": "yarn test:pre && yarn jest",
-    "test:ci": "jest --coverage && yarn test:bump && yarn test:ci-badges",
+    "test:ci": "yarn test:pre && yarn jest --coverage && yarn test:post",
     "test:bump": "jest-coverage-thresholds-bumper --silent --margin 1",
     "test:ci-badges": "coverage-badges",
+    "test:post": "yarn test:bump && yarn test:ci-badges",
     "lint": "eslint",
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "postinstall": "husky install"
   },
   "dependencies": {
-    "@types/react": "^18.0.17",
-    "ink": "^3.2.0",
-    "ink-form": "^1.0.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "terminal-canvas": "^3.1.2",
-    "xterm": "^4.19.0"
+    "yargs": "^17.5.1"
   },
   "devDependencies": {
     "@types/jest": "^28.1.7",
     "@types/node": "^18.7.6",
-    "@types/react-dom": "^18.0.6",
+    "@types/yargs": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
     "coverage-badges-cli": "^1.0.10",
@@ -63,9 +60,9 @@
     "coverageThreshold": {
       "global": {
         "branches": 100,
-        "functions": 100,
+        "functions": 91.66,
         "lines": 100,
-        "statements": 100
+        "statements": 96.96
       }
     }
   },
