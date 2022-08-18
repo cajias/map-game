@@ -1,1 +1,1 @@
-export { start } from "./cli";
+export { parse, Config } from "./cli";
