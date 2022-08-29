@@ -3547,7 +3547,6 @@ __metadata:
     lint-staged: ^13.0.3
     minimist: ^1.2.6
     prettier: 2.7.1
-    terminal-canvas: ^3.1.2
     ts-jest: ^28.0.8
     ts-node: ^10.9.1
     tslib: ^2.4.0
@@ -4579,13 +4578,6 @@ __metadata:
     mkdirp: ^1.0.3
     yallist: ^4.0.0
   checksum: a04c07bb9e2d8f46776517d4618f2406fb977a74d914ad98b264fc3db0fe8224da5bec11e5f8902c5b9bcb8ace22d95fbe3c7b36b8593b7dfc8391a25898f32f
-  languageName: node
-  linkType: hard
-
-"terminal-canvas@npm:^3.1.2":
-  version: 3.1.2
-  resolution: "terminal-canvas@npm:3.1.2"
-  checksum: 5f93f11359d25263ae0ffb3bb46580528a58f488a5f28e49a1f67fd51527e40bab3f20ca693a81868a43a6c7a2ee7f5a4254c2eaabf8348e99fe38f3bca89b1f
   languageName: node
   linkType: hard
 

@@ -1,22 +1,43 @@
-export class World {
-  public readonly territory: Array<Array<string>>;
-  private readonly verticalBorder: string;
+import { Tile } from "./Tile";
+import { Region } from "./Region";
 
-  constructor(size: number, _regions: number) {
-    this.territory = new Array(size);
-    for (let i = 0; i < this.territory.length; i++) {
-      this.territory[i] = new Array(size).fill("0");
-    }
-    this.verticalBorder =
-      this.territory.length == 0
-        ? ""
-        : `${"═".repeat(this.territory?.length * 4 - 1)}`;
+export class WorldMap {
+  public readonly tiles: Tile[];
+  public readonly regions: Region[];
+
+  constructor(private readonly size: number, _regions: number) {
+    this.tiles = Array.from(new Array(this.size ** 2), () => new Tile(0));
+
+    // TODO: @begggs support more than one region
+    this.regions = [
+      new Region(
+        0,
+        this.tiles.flatMap((p) => p)
+      ),
+    ];
   }
 
-  public render(): string {
-    const body = this.territory
-      .map((row) => `║ ${row.join(" │ ")} ║`)
-      .join(`\n║${"───┼".repeat(this.territory.length - 1)}───╢\n`);
-    return `╔${this.verticalBorder}╗\n${body}\n╚${this.verticalBorder}╝`;
+  private verticalBorder = () =>
+    this.size === 0 ? "" : `${"═".repeat(this.size * 4 - 1)}`;
+
+  render(): string {
+    const row = new Array(this.size);
+    let i = 0;
+    let table = `╔${this.verticalBorder()}╗\n`;
+    for (const cell of this.tiles) {
+      row[i] = cell.render();
+      i++;
+      if (i === this.size) {
+        i = 0;
+        table += `║ ${row.join(" │ ")} ║\n`;
+      }
+    }
+    table += `╚${this.verticalBorder()}╝`;
+    return table;
   }
 }
+
+export type Player = {
+  id: number;
+  color: string;
+};

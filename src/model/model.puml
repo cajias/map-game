@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Player
+class Game {
+    * players
+
+}
+class WorldMap {
+    * tiles
+}
+class Tile {
+    * index
+    --
+    * region
+    getNeighbor()
+}
+
+WorldMap }|--|| Tile
+Tile |o-- Player
+Game ||--|| WorldMap
+Game ||--|{ Player
+@enduml
