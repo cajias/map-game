@@ -22,9 +22,11 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "chalk": "4.1.2",
     "yargs": "^17.5.1"
   },
   "devDependencies": {
+    "@types/chalk": "^2.2.0",
     "@types/jest": "^28.1.7",
     "@types/node": "^18.7.6",
     "@types/yargs": "^17.0.11",
@@ -58,10 +60,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 100,
-        "functions": 91.66,
-        "lines": 100,
-        "statements": 96.96
+        "branches": 72.72,
+        "functions": 86.84,
+        "lines": 87.25,
+        "statements": 88.18
       }
     }
   },
