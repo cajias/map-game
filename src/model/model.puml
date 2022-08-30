@@ -2,12 +2,19 @@
 'https://plantuml.com/class-diagram
 
 class Player
-class Game {
-    * players
 
+class Game {
+    * Player
+    * Region
+    * WorldMap
+    --
+    play()
+    render()
 }
 class WorldMap {
     * tiles
+    --
+    render()
 }
 class Tile {
     * index
@@ -17,7 +24,9 @@ class Tile {
 }
 
 WorldMap }|--|| Tile
-Tile |o-- Player
+Region |o-- Player
 Game ||--|| WorldMap
 Game ||--|{ Player
+Game ||--|{ Region
+Region ||--|{ Tile
 @enduml
