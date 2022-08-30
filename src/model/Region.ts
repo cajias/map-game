@@ -1,13 +1,19 @@
-import { Tile } from "./Tile";
-import { Player } from "./World";
+import { Tile } from "./WorldMap/Tile";
+import { Player } from "./Player";
 
 export class Region {
   private owner?: Player;
 
+  get ownerId() {
+    return this.owner?.id;
+  }
+
   constructor(id: number, private readonly tiles: Tile[]) {
-    tiles.forEach((p) => {
-      p.regionId = id;
-    });
+    tiles.forEach((p) => (p.region = id));
+  }
+
+  add(tile: Tile): void {
+    this.tiles.push(tile);
   }
 
   assign(owner: Player): void {
