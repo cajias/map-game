@@ -106,4 +106,5 @@ dist
 
 .idea
 .yarn/cache
+.yarn/install-state.gz
 tmp
